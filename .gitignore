@@ -8,6 +8,14 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+
+Library/
+obj/
+Builds/
+.csproj
+.sln
+.suo
+
 # Windows Installer files
 *.cab
 *.msi
