@@ -12,6 +12,7 @@ $RECYCLE.BIN/
 Library/
 obj/
 Builds/
+Temp/
 .csproj
 .sln
 .suo
