@@ -7,10 +7,13 @@ public class ComputerControls : MonoBehaviour
     public Animator anim;
 
     public bool isIdle;
+	bool isInventoryOut;
     bool isMoving;
     bool isAttacking;
     bool facingRight;
     float moveSpeed = 0.05f;
+
+	public GameObject inventory;
     // Use this for initialization
     void Start()
     {
@@ -18,6 +21,7 @@ public class ComputerControls : MonoBehaviour
         isMoving = false;
         isAttacking = false;
         facingRight = true;
+
     }
 
     // Update is called once per frame
@@ -66,11 +70,24 @@ public class ComputerControls : MonoBehaviour
             GameObject.Find("Edward_Root").transform.position += new Vector3(0, -moveSpeed);
         if (Input.GetKey("d"))
             GameObject.Find("Edward_Root").transform.position += new Vector3(moveSpeed, 0);
-
-
         if ((Input.GetKey("a") & facingRight) || (Input.GetKey("d") & !facingRight))
             Flip();
+
+		if (Input.GetKeyDown ("i")) 
+			ShowHideInventory ();
     }
+
+	void ShowHideInventory()
+	{
+		if (isInventoryOut == false) {
+			inventory.SetActive(true);
+			isInventoryOut = true;
+		} else 
+		{
+			inventory.SetActive(false);
+			isInventoryOut = false;
+		}
+	}
 
     void Flip()
     {
@@ -79,4 +96,6 @@ public class ComputerControls : MonoBehaviour
         scale.x *= -1;
         GameObject.Find("Edward_Root").transform.localScale = scale;
     }
+
+
 }
